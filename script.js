@@ -17,12 +17,16 @@ setInterval(function(){
     {
         character.style.top = (characterTop + 3) + "px";
     }
-    if(characterTop>480)
-    {
-        alert("Game Over, Score : "+counter);
+    var bLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
+    var hTop = parseInt(window.getComputedStyle(hole).getPropertyValue("top"));
+    var cTop = -(500-characterTop);
+
+    if((characterTop>480)||((bLeft<20)&&(bLeft>-50)&&((cTop<hTop)||(cTop>hTop+130)))){
+        alert("Game over. Score: "+(counter-1));
         character.style.top = 100 + "px";
-        counter = 0;
+        counter=0;
     }
+
 
 }, 10);
 
