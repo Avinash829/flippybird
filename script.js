@@ -1,34 +1,83 @@
 var block = document.getElementById("block");
 var hole = document.getElementById("hole");
 var character = document.getElementById("character");
+var currentScoreDiv = document.getElementById("current");
+var highScoreDiv = document.getElementById("high");
+document.getElementById("gameover").style.display = "none";
+var gameover = document.getElementById("gameover");
 var jumping = 0;
 var counter = 0;
+
+let highScore = localStorage.getItem("flippyHighScore") || 0;
+highScoreDiv.innerText = "High Score: " + highScore;
 
 hole.addEventListener('animationiteration', () => {
     var random = Math.random() * 3;
     var top = (random*100)+150;
     hole.style.top = -(top) + "px";
     counter++;
+    currentScoreDiv.innerText = "Your Score: " + counter;
+
+    if (counter > highScore) 
+    {
+        highScore = counter;
+        localStorage.setItem("flippyHighScore", highScore);
+        highScoreDiv.innerText = "High Score: " + highScore;
+    }
 });
 
 setInterval(function(){
+    // if (jumping === 0) 
+    // {
+    //     let characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
+    //     character.style.top = (characterTop + 3) + "px";
+    // }
+
+    // let characterRect = character.getBoundingClientRect();
+    // let blockRect = block.getBoundingClientRect();
+    // let holeRect = hole.getBoundingClientRect();
+
+    
+    // if (characterRect.bottom >= document.getElementById("game").getBoundingClientRect().bottom) {
+    //     gameOver();
+    // }
+    // let horizontalOverlap =
+    //     characterRect.right > blockRect.left &&
+    //     characterRect.left < blockRect.right;
+
+    // let insideHoleVertically =
+    //     characterRect.top > holeRect.top &&
+    //     characterRect.bottom < holeRect.bottom;
+
+    // if (horizontalOverlap && !insideHoleVertically) 
     var characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
-    if(jumping == 0)
-    {
-        character.style.top = (characterTop + 3) + "px";
+    if(jumping==0){
+        character.style.top = (characterTop+3)+"px";
     }
-    var bLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
-    var hTop = parseInt(window.getComputedStyle(hole).getPropertyValue("top"));
+    var blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
+    var holeTop = parseInt(window.getComputedStyle(hole).getPropertyValue("top"));
     var cTop = -(500-characterTop);
-
-    if((characterTop>480)||((bLeft<20)&&(bLeft>-50)&&((cTop<hTop)||(cTop>hTop+130)))){
-        alert("Game over. Score: "+(counter-1));
-        character.style.top = 100 + "px";
-        counter=0;
+    if((characterTop>480)||((blockLeft<70)&&(blockLeft>20)&&((cTop<holeTop)||(cTop>holeTop+130))))
+    {
+        gameOver();
     }
-
 
 }, 10);
+
+function gameOver() {
+    document.getElementById("game").style.display = "none";
+    
+
+   
+    gameover.style.display = "flex";
+    gameover.style.position = "fixed";
+    gameover.style.top = "50%";
+    gameover.style.left = "50%";
+    gameover.style.transform = "translate(-50%, -50%)";
+
+    counter = 0;
+}
+
 
 function jump(){
     jumping = 1;
@@ -48,4 +97,8 @@ function jump(){
         }
         jumpCount++;
     }, 10);
+}
+
+function restartGame() {
+    location.reload();
 }
