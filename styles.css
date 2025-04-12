@@ -4,6 +4,7 @@
 }
 
 #container {
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,7 +17,8 @@
     color: white;
     padding: 15px 30px;
     border-radius: 10px;
-    margin: 30px 0 20px 0; /* Top and bottom spacing */
+    margin-top: 10px;
+    margin-bottom: 10px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     text-align: center;
     font-size: 18px;
@@ -24,13 +26,14 @@
 
 
 #game{
-    top: 10px;
+    top: -10px;
     width: 400px;
     height: 500px;
     border: 1px solid black;
     margin: auto;
     overflow: hidden;
     position: relative;
+    border-radius: 5px;
 }
 
 #block{
