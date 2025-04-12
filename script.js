@@ -27,29 +27,7 @@ hole.addEventListener('animationiteration', () => {
 });
 
 setInterval(function(){
-    // if (jumping === 0) 
-    // {
-    //     let characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
-    //     character.style.top = (characterTop + 3) + "px";
-    // }
-
-    // let characterRect = character.getBoundingClientRect();
-    // let blockRect = block.getBoundingClientRect();
-    // let holeRect = hole.getBoundingClientRect();
-
     
-    // if (characterRect.bottom >= document.getElementById("game").getBoundingClientRect().bottom) {
-    //     gameOver();
-    // }
-    // let horizontalOverlap =
-    //     characterRect.right > blockRect.left &&
-    //     characterRect.left < blockRect.right;
-
-    // let insideHoleVertically =
-    //     characterRect.top > holeRect.top &&
-    //     characterRect.bottom < holeRect.bottom;
-
-    // if (horizontalOverlap && !insideHoleVertically) 
     var characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
     if(jumping==0){
         character.style.top = (characterTop+3)+"px";
