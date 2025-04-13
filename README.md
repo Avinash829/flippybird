@@ -19,7 +19,17 @@ A lightweight and engaging browser-based game made with HTML, CSS, and JavaScrip
 
 ->The ball character jumps upwards when the user clicks anywhere on the screen.
 
-->Gravity pulls the character down over time.
+->The jump is implemented using a `setInterval()` inside the `jump()` function:
+- When the user clicks, the function starts a loop that moves the character **upward** by **5px** repeatedly.
+- This loop stops after a small count (20 iterations), simulating a smooth jump arc.
+- While jumping, a flag `jumping` is set to `1` to temporarily disable gravity.
+
+**Gravity**:
+Gravity is simulated using a continuously running setInterval() function:
+
+->If the bird is not jumping, its vertical position increases (falls) by 3px every 10ms.
+
+->This mimics the effect of gravity pulling the character down.
 
 **Obstacles (Blocks and Holes)**:
 
