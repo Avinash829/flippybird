@@ -47,3 +47,5 @@ Gravity is simulated using a continuously running setInterval() function:
 
 ->The high score is saved using the browser's localStorage.
 
+**Live Link**: https://avinash829.github.io/flippybird/
+
